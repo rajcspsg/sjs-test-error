@@ -1,10 +1,13 @@
 package generic
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import generic.impls._
+
 case class Person(age: Int, name: String)
 
-class ToRefTreeSpec extends FlatSpec with Matchers {
+class RefTreeSpec extends AnyFlatSpec with Matchers with ScalaCheckPropertyChecks {
   it should "auto-derive ToRefTree instances" in {
     Person(3, "Nick").refTree should matchPattern {
       case RefTree.Ref(

@@ -10,7 +10,7 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 val commonSettings = Seq(
   scalaVersion := "2.12.10",
   crossScalaVersions := Seq("2.12.10"),
-  scalacOptions ++= Seq("-feature", "-deprecation", "-Xlint", "-Xfatal-warnings", "-Ypartial-unification"),
+  scalacOptions ++= Seq("-feature", "-deprecation", "-Xlint",  "-Ypartial-unification"),
   Compile / compile / scalacOptions  += "-Ywarn-unused-import",
   Compile / doc / scalacOptions += "-no-link-warnings"
 )
@@ -28,8 +28,9 @@ val core = crossProject(JSPlatform, JVMPlatform)
       "com.softwaremill.quicklens" %%% "quicklens" % "1.4.8",
       "com.github.julien-truffaut" %%% "monocle-macro" % "2.0.0",
       "com.outr" %%% "scribe" % "2.7.9",
-      "org.scalatest" %%% "scalatest" % "3.0.3" % Test,
-      "org.scalacheck" %%% "scalacheck" % "1.13.5" % Test
+      "org.scalatest" %%% "scalatest" % "3.1.4" % Test,
+      "org.scalacheck" %%% "scalacheck" % "1.14.3" % Test,
+      "org.scalatestplus" %% "scalacheck-1-14" % "3.1.3.0" % Test
     )
   )
   .jvmSettings(
